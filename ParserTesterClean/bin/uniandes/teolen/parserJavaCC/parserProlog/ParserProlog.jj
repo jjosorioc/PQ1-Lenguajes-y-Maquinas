@@ -1,0 +1,134 @@
+/**
+ * JavaCC file
+ * PQ1 de Juan José Osorio 202021720
+ */
+
+options {
+  IGNORE_CASE = true;
+  STATIC = false;
+  ERROR_REPORTING = true;
+}
+PARSER_BEGIN(ParserProlog)
+package uniandes.teolen.parserJavaCC.parserProlog;
+
+import java.util.*;
+import java.util.ArrayList;
+ 
+public class ParserProlog {
+	
+  
+} 
+
+PARSER_END(ParserProlog)
+
+SKIP :
+{
+ 	" " | "\r" | "\t" | "\n"
+
+}
+TOKEN : /* OPERATORS */
+{
+    <ARROW: ":-">
+
+}
+
+TOKEN :
+{
+ 	< PETRI: "PN" > //PQ1
+|	< PLACES: "PLACES" >
+| 	< TRANSITIONS: "TRANSITIONS" >
+| 	< PETRIEND: "NP" >
+|   < INT: ( <DIGIT> )( <DIGIT> )* > // A number is a sequence of digits, este es el number del PQ1
+|   < ID: (< MAY > | < MIN >)+ > //Los identificadores del PQ1
+|   < #DIGIT: ["0"-"9"] > //# es para tokens especiales
+|   < #MAY: ["A"-"Z"] >
+|   < #MIN: ["a"-"z"] > 
+}
+
+
+void hr(): //PQ1
+{
+	ArrayList<String> variablesCreadas = new ArrayList<String >();
+}
+{
+	< PETRI > <ID >
+	< PLACES > PlaceSpecification(variablesCreadas) ("," PlaceSpecification(variablesCreadas))*
+	< TRANSITIONS > TransitionSpecification(variablesCreadas) (";" TransitionSpecification(variablesCreadas))*
+	< PETRIEND >
+}
+
+
+void PlaceSpecification(ArrayList<String> variablesCreadas): //PQ1
+{
+	String nombrePlace = "";
+
+}
+{
+	< ID >
+	{
+	  try {
+	    nombrePlace = token.image;
+	    variablesCreadas.add(nombrePlace);
+	    
+	  }catch(Exception e) { }
+	}
+
+	"("< INT >")"
+}
+
+void TransitionSpecification(ArrayList<String> variablesCreadas):
+{
+
+}
+{
+	< ID > "(""{"
+	//Input
+	(< ID >
+	{
+		try {
+		  System.out.println(!(variablesCreadas.contains(token.image)));
+		  if (!(variablesCreadas.contains(token.image)))
+		  {
+		    System.out.println("Se va a lanzar el error");
+		    variablesCreadas.get(1000); // Para que lance un error
+		  }
+		}catch(Exception e)
+		{
+			System.err.println(token.image + " is an undefined Place Name!");
+		}
+	}
+
+
+
+	("," < ID >
+	{
+		try {
+		  if (!(variablesCreadas.contains(token.image)))
+		  {
+		    throw new IllegalArgumentException(token.image + " is an undefined Place Name!");
+		  }
+		}catch(Exception e) { }
+	}
+	)*)?"}"
+	//Output
+	",""{"(< ID >
+	{
+		try {
+		  if (!(variablesCreadas.contains(token.image)))
+		  {
+		    throw new IllegalArgumentException(token.image + " is an undefined Place Name!");
+		  }
+		}catch(Exception e) { }
+	}
+	("," < ID >
+	{
+		try {
+		  if (!(variablesCreadas.contains(token.image)))
+		  {
+		    throw new IllegalArgumentException(token.image + " is an undefined Place Name!");
+		  }
+		}catch(Exception e) { }
+	}
+	)*)?"}" ")"
+}
+
