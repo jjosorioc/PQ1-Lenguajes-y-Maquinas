@@ -6,9 +6,9 @@ Practical Quiz
 
 We can specify Petri net with the language defined below.
 
--A Petri net specification begins with keyword PN followed by an identifier and end with the
+- A Petri net specification begins with keyword PN followed by an identifier and end with the
 keyword NP.
--Between PN name and NP we have the following:
+- Between PN name and NP we have the following:
   - A list of places: The keyword PLACES followed place specifications separated by
 commas. A place specification is an identifier followed by its capacity within parenthesis.
 The capacity is a number.
