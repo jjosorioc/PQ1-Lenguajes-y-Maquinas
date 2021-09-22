@@ -64,15 +64,13 @@ public class ParserProlog implements ParserPrologConstants {
     case ID:
       jj_consume_token(ID);
                 try {
-                  System.out.println(!(variablesCreadas.contains(token.image)));
                   if (!(variablesCreadas.contains(token.image)))
                   {
-                    System.out.println("Se va a lanzar el error");
-                    variablesCreadas.get(1000); // Para que lance un error
+                    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
                   }
                 }catch(Exception e)
                 {
-                        System.err.println(token.image + " is an undefined Place Name!");
+                        {if (true) throw new ParseException("\u005c""+ token.image + "\u005c"" + " is an undefined Place Name!");}
                 }
       label_3:
       while (true) {
@@ -89,9 +87,12 @@ public class ParserProlog implements ParserPrologConstants {
                 try {
                   if (!(variablesCreadas.contains(token.image)))
                   {
-                    {if (true) throw new IllegalArgumentException(token.image + " is an undefined Place Name!");}
+                    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
                   }
-                }catch(Exception e) { }
+                }catch(Exception e)
+                {
+                        {if (true) throw new ParseException("\u005c""+ token.image + "\u005c"" + " is an undefined Place Name!");}
+                }
       }
       break;
     default:
@@ -107,9 +108,12 @@ public class ParserProlog implements ParserPrologConstants {
                 try {
                   if (!(variablesCreadas.contains(token.image)))
                   {
-                    {if (true) throw new IllegalArgumentException(token.image + " is an undefined Place Name!");}
+                    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
                   }
-                }catch(Exception e) { }
+                }catch(Exception e)
+                {
+                        {if (true) throw new ParseException("\u005c""+ token.image + "\u005c"" + " is an undefined Place Name!");}
+                }
       label_4:
       while (true) {
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
@@ -125,9 +129,12 @@ public class ParserProlog implements ParserPrologConstants {
                 try {
                   if (!(variablesCreadas.contains(token.image)))
                   {
-                    {if (true) throw new IllegalArgumentException(token.image + " is an undefined Place Name!");}
+                    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
                   }
-                }catch(Exception e) { }
+                }catch(Exception e)
+                {
+                        {if (true) throw new ParseException("\u005c""+ token.image + "\u005c"" + " is an undefined Place Name!");}
+                }
       }
       break;
     default:

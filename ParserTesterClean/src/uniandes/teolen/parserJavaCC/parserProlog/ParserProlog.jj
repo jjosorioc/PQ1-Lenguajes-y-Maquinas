@@ -86,15 +86,13 @@ void TransitionSpecification(ArrayList<String> variablesCreadas):
 	(< ID >
 	{
 		try {
-		  System.out.println(!(variablesCreadas.contains(token.image)));
 		  if (!(variablesCreadas.contains(token.image)))
 		  {
-		    System.out.println("Se va a lanzar el error");
-		    variablesCreadas.get(1000); // Para que lance un error
+		    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
 		  }
 		}catch(Exception e)
 		{
-			System.err.println(token.image + " is an undefined Place Name!");
+			throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
 		}
 	}
 
@@ -105,9 +103,12 @@ void TransitionSpecification(ArrayList<String> variablesCreadas):
 		try {
 		  if (!(variablesCreadas.contains(token.image)))
 		  {
-		    throw new IllegalArgumentException(token.image + " is an undefined Place Name!");
+		    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
 		  }
-		}catch(Exception e) { }
+		}catch(Exception e)
+		{
+			throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
+		}
 	}
 	)*)?"}"
 	//Output
@@ -116,18 +117,24 @@ void TransitionSpecification(ArrayList<String> variablesCreadas):
 		try {
 		  if (!(variablesCreadas.contains(token.image)))
 		  {
-		    throw new IllegalArgumentException(token.image + " is an undefined Place Name!");
+		    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
 		  }
-		}catch(Exception e) { }
+		}catch(Exception e)
+		{
+			throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
+		}
 	}
 	("," < ID >
 	{
 		try {
 		  if (!(variablesCreadas.contains(token.image)))
 		  {
-		    throw new IllegalArgumentException(token.image + " is an undefined Place Name!");
+		    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
 		  }
-		}catch(Exception e) { }
+		}catch(Exception e)
+		{
+			throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
+		}
 	}
 	)*)?"}" ")"
 }
