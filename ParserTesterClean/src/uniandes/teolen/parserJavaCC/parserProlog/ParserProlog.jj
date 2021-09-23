@@ -85,56 +85,36 @@ void TransitionSpecification(ArrayList<String> variablesCreadas):
 	//Input
 	(< ID >
 	{
-		try {
-		  if (!(variablesCreadas.contains(token.image)))
-		  {
-		    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
-		  }
-		}catch(Exception e)
-		{
-			throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
-		}
+	  if (!(variablesCreadas.contains(token.image)))  // Revisar si es una variable indefinida
+	  {
+	    throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
+	  }	
 	}
 
 
 
 	("," < ID >
 	{
-		try {
-		  if (!(variablesCreadas.contains(token.image)))
-		  {
-		    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
-		  }
-		}catch(Exception e)
-		{
-			throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
-		}
+	  if (!(variablesCreadas.contains(token.image)))  // Revisar si es una variable indefinida
+	  {
+	    throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
+	  }	
 	}
 	)*)?"}"
 	//Output
 	",""{"(< ID >
 	{
-		try {
-		  if (!(variablesCreadas.contains(token.image)))
-		  {
-		    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
-		  }
-		}catch(Exception e)
-		{
-			throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
-		}
+	  if (!(variablesCreadas.contains(token.image)))  // Revisar si es una variable indefinida
+	  {
+	    throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
+	  }	
 	}
 	("," < ID >
 	{
-		try {
-		  if (!(variablesCreadas.contains(token.image)))
-		  {
-		    variablesCreadas.get(variablesCreadas.size() + 1); // Para que lance un error
-		  }
-		}catch(Exception e)
-		{
-			throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
-		}
+	  if (!(variablesCreadas.contains(token.image)))  // Revisar si es una variable indefinida
+	  {
+	    throw new ParseException("\""+ token.image + "\"" + " is an undefined Place Name!");
+	  }	
 	}
 	)*)?"}" ")"
 }
