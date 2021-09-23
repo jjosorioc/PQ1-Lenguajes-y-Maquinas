@@ -12,7 +12,6 @@ PARSER_BEGIN(ParserProlog)
 package uniandes.teolen.parserJavaCC.parserProlog;
 
 import java.util.*;
-import java.util.ArrayList;
  
 public class ParserProlog {
 	
@@ -48,6 +47,7 @@ TOKEN :
 
 void hr(): //PQ1
 {
+  	// ArrayList that will have the name of declared "PlaceNames" (That's how it's called in the document)
 	ArrayList<String> variablesCreadas = new ArrayList<String >();
 }
 {

@@ -2,11 +2,11 @@
 package uniandes.teolen.parserJavaCC.parserProlog;
 
 import java.util.*;
-import java.util.ArrayList;
 
 public class ParserProlog implements ParserPrologConstants {
 
   final public void hr() throws ParseException {
+        // ArrayList that will have the name of declared "PlaceNames" (That's how it's called in the document)
         ArrayList<String> variablesCreadas = new ArrayList<String >();
     jj_consume_token(PETRI);
     jj_consume_token(ID);
